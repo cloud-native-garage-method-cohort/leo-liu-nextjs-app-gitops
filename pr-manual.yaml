@@ -9,7 +9,8 @@ spec:
   workspaces:
     - name: pipeline-shared-data
       persistentVolumeClaim:
-        claimName: leo-liu-live-pvc-2nd
+        # claimName: leo-liu-live-pvc-2nd
+        claimName: leo-liu-live-pvc-gid-rwx
       # volumeClaimTemplate:
       #   spec:
       #     accessModes:

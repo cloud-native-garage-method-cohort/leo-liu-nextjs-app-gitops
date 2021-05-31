@@ -11,7 +11,7 @@ spec:
       spec:
         serviceAccountName: build-bot
         pipelineRef:
-          name: leo-liu-pipeline-react-next-triggertemplate
+          name: leo-liu-react-next-pipeline
         workspaces:
           - name: pipeline-shared-data
             persistentVolumeClaim:
