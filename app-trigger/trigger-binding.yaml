@@ -1,7 +1,7 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
-  name: kisoong-leo-pipeline-react-next-pipeline-triggerbinding
+  name: leo-liu-pipeline-react-next-pipeline-triggerbinding
 spec:
   params:
     - name: namespace

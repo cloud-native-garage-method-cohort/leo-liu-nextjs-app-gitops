@@ -1,21 +1,21 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  name: kisoong-leo-pipeline-react-next-triggertemplate
+  name: leo-liu-pipeline-react-next-triggertemplate
 spec:
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
-        generateName: kisoong-leo-pipeline-react-next-pipeline-run-
+        generateName: leo-liu-pipeline-react-next-pipeline-run-
       spec:
         serviceAccountName: build-bot
         pipelineRef:
-          name: kisoong-leo-react-next-pipeline
+          name: leo-liu-pipeline-react-next-triggertemplate
         workspaces:
           - name: pipeline-shared-data
             persistentVolumeClaim:
-              claimName: leo-liu-live-pvc-2nd
+              claimName: leo-liu-live-pvc-gid-rwx
             # volumeClaimTemplate:
             #   spec:
             #     accessModes:
