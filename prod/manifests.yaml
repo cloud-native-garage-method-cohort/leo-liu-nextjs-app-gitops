@@ -4,10 +4,10 @@ metadata:
   annotations:
     enzo: "true"
   labels:
-    app: kisoong-leo-assignment
-    app.kubernetes.io/instance: kisoong-leo-assignment
-    app.kubernetes.io/name: kisoong-leo-assignment
-  name: kisoong-leo-assignment
+    app: leo-liu-assignment
+    app.kubernetes.io/instance: leo-liu-assignment
+    app.kubernetes.io/name: leo-liu-assignment
+  name: leo-liu-assignment
   namespace: leo-liu-pipeline-from-scratch
 spec:
   ports:
@@ -16,8 +16,8 @@ spec:
     protocol: TCP
     targetPort: 3000
   selector:
-    app.kubernetes.io/instance: kisoong-leo-assignment
-    app.kubernetes.io/name: kisoong-leo-assignment
+    app.kubernetes.io/instance: leo-liu-assignment
+    app.kubernetes.io/name: leo-liu-assignment
   sessionAffinity: None
   type: ClusterIP
 ---
@@ -29,11 +29,11 @@ metadata:
     app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/leo-liu-nextjs-app
     enzo: "true"
   labels:
-    app: kisoong-leo-assignment
-    app.kubernetes.io/instance: kisoong-leo-assignment
-    app.kubernetes.io/name: kisoong-leo-assignment
+    app: leo-liu-assignment
+    app.kubernetes.io/instance: leo-liu-assignment
+    app.kubernetes.io/name: leo-liu-assignment
     app.openshift.io/runtime: js
-  name: kisoong-leo-assignment
+  name: leo-liu-assignment
   namespace: leo-liu-pipeline-from-scratch
 spec:
   progressDeadlineSeconds: 600
@@ -41,16 +41,16 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app.kubernetes.io/instance: kisoong-leo-assignment
-      app.kubernetes.io/name: kisoong-leo-assignment
+      app.kubernetes.io/instance: leo-liu-assignment
+      app.kubernetes.io/name: leo-liu-assignment
   template:
     metadata:
       annotations:
         enzo: "true"
       creationTimestamp: null
       labels:
-        app.kubernetes.io/instance: kisoong-leo-assignment
-        app.kubernetes.io/name: kisoong-leo-assignment
+        app.kubernetes.io/instance: leo-liu-assignment
+        app.kubernetes.io/name: leo-liu-assignment
     spec:
       containers:
       - env:
@@ -58,7 +58,7 @@ spec:
         - name: PROTOCOLS
         - name: LOG_LEVEL
           value: debug
-        image: quay.io/leoliu2011/react-next-app:cc57ecc56529b0e03061b6057b20fd0dd29f7694
+        image: quay.io/leoliu2011/react-next-app:22a968e4a40b92f476be03b110b9092f60b4b287
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -69,7 +69,7 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 1
-        name: kisoong-leo-assignment
+        name: leo-liu-assignment
         ports:
         - containerPort: 3000
           name: http
@@ -104,6 +104,6 @@ spec:
     termination: edge
   to:
     kind: Service
-    name: kisoong-leo-assignment
+    name: leo-liu-assignment
     weight: 100
   wildcardPolicy: None
