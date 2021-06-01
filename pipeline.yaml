@@ -112,7 +112,7 @@ spec:
           value: yliu1382011@gmail.com
         - name: GIT_SCRIPT
           value: |
-            mkdir prod
+            mkdir -p prod
             cp /workspace/input/k8s/manifests.yaml prod/manifests.yaml
             git add ./prod/manifests.yaml
             git commit -m "Triggered by pipeline $(tasks.clone-repository.results.commit), and updated manifests.yaml"

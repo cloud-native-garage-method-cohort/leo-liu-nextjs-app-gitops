@@ -16,6 +16,9 @@ spec:
           - name: pipeline-shared-data
             persistentVolumeClaim:
               claimName: leo-liu-live-pvc-gid-rwx
+          - name: pipeline-env-shared-data
+            persistentVolumeClaim:
+              claimName: leo-liu-live-pvc-gid-rwx-2
             # volumeClaimTemplate:
             #   spec:
             #     accessModes:
