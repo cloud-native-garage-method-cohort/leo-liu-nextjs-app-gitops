@@ -7,6 +7,9 @@ spec:
   pipelineRef:
     name: leo-liu-react-next-pipeline
   workspaces:
+    - name: pipeline-env-shared-data
+      persistentVolumeClaim:
+        claimName: leo-liu-live-pvc-gid-rwx-2
     - name: pipeline-shared-data
       persistentVolumeClaim:
         # claimName: leo-liu-live-pvc-2nd

@@ -9,6 +9,9 @@ spec:
     - name: pipeline-shared-data
       description: |
         This workspace stores the cloned repository and is available to all steps
+    - name: pipeline-env-shared-data
+      description: |
+        This workspace stores the data mainly for gitops environment files of workloads
   params:
     - name: image-repo
       type: string
@@ -86,4 +89,40 @@ spec:
         name: test-deploy
       workspaces:
         - name: source
+          workspace: pipeline-shared-data
+    - name: clone-env-repository
+      runAfter: 
+        - test-deploy
+      params:
+        - name: url
+          value: https://github.com/cloud-native-garage-method-cohort/leo-liu-nextjs-app-gitops.git
+      taskRef:
+        kind: Task
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: pipeline-env-shared-data
+    - name: upload-environment
+      runAfter:
+        - clone-env-repository
+      params:
+        - name: GIT_USER_NAME
+          value: yliu138
+        - name: GIT_USER_EMAIL
+          value: yliu1382011@gmail.com
+        - name: GIT_SCRIPT
+          value: |
+            mkdir prod
+            cp /workspace/input/k8s/manifests.yaml prod/manifests.yaml
+            git add ./prod/manifests.yaml
+            git commit -m "Triggered by pipeline $(tasks.clone-repository.results.commit), and updated manifests.yaml"
+            echo "Current branch: $(git branch)"
+            git push origin HEAD:master
+      taskRef:
+        kind: Task
+        name: git-cli
+      workspaces:
+        - name: source
+          workspace: pipeline-env-shared-data
+        - name: input
           workspace: pipeline-shared-data
